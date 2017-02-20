@@ -2,7 +2,11 @@
 <html>
     <head>
 <?php
-    $loginaborted = ($_GET["loginaborted"])?: 0;
+
+    $RETURNSTATE_LOGINABORTED = 1;
+    $RETURNSTATE_REGISTRATION_SUCCESS = 2;
+
+    $returnstate = ($_GET["returnstate"])?: 0;
 
     function average($img) {
         $w = imagesx($img);
@@ -68,7 +72,7 @@
 ?>
         <title>MyWebsite - Login</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Sansita" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Asul" rel="stylesheet">
 
         <link rel="stylesheet" href="css/general-style.css">
         <link rel="stylesheet" href="css/index-style.css">
@@ -79,8 +83,10 @@ body {
 }
 
 <?php
-    if($loginaborted != 0) {
+    if($returnstate == $RETURNSTATE_LOGINABORTED) {
         print ".website-message-wrong-credentials {\n    color: rgb(244, 86, 66);\n}\n\n.website-message-wrong-credentials a {\n    color: rgb(247, 40, 14);\n}\n\n";
+    } else if($returnstate == $RETURNSTATE_REGISTRATION_SUCCESS) {
+        print ".website-message-registration-complete {\n    color: rgb(40, 247, 14);\n}\n\n";
     }
 ?>
 .login-wrapper {
@@ -102,8 +108,10 @@ body {
             <span class="website-header">MyWebsite</span><br/>
             <span class="website-sub-header">The best community to have yet existed!</span>
             <?php
-                if($loginaborted != 0) {
+                if($returnstate == $RETURNSTATE_LOGINABORTED) {
                     print "<br/><span class=\"website-message-wrong-credentials\">Your password or username were incorrect. <a href=\"restore.php\">Forgot your password?</a></span>";
+                } else if($returnstate == $RETURNSTATE_REGISTRATION_SUCCESS) {
+                    print "<br/><span class=\"website-message-registration-complete\">Your registration has been successfully completed.</span>";
                 }
             ?>
             <form action="login.php" method="POST">
@@ -128,7 +136,7 @@ body {
                     <li><a href="terms.php">Terms of service</a></li>
                     <li><a href="privacy.php">Privacy note</a></li>
                     <li><a href="support.php">Support</a></li>
-                    <li><a href="info.php">Informations</a></li>
+                    <li><a href="info.php">Information</a></li>
                 </ul>
             </div>
         </div>

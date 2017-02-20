@@ -63,10 +63,16 @@
     $average_color_rgb = average($img);
 
     imagedestroy($img);
+
+
+
+    // TODO: Try to add the user to the database
+
+    // print "<meta http-equiv=\"refresh\" content=\"0; url=signup.php?returnstate=2\"/>";
 ?>
         <title>MyWebsite - Sending Registration</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Sansita" rel="stylesheet">
+        
+        <link href="https://fonts.googleapis.com/css?family=Asul" rel="stylesheet">
 
         <link rel="stylesheet" href="css/general-style.css">
 
@@ -114,7 +120,7 @@ body {
                     <li><a href="terms.php">Terms of service</a></li>
                     <li><a href="privacy.php">Privacy note</a></li>
                     <li><a href="support.php">Support</a></li>
-                    <li><a href="info.php">Informations</a></li>
+                    <li><a href="info.php">Information</a></li>
                 </ul>
             </div>
         </div>

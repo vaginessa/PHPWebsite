@@ -2,7 +2,9 @@
 <html>
     <head>
 <?php
-    $loginaborted = ($_GET["loginaborted"])?: 0;
+    $RETURNSTATE_REGISTRATION_ABORTED = 2;
+
+    $returnstate = ($_GET["returnstate"])?: 0;
 
     function average($img) {
         $w = imagesx($img);
@@ -69,7 +71,7 @@
 
         <title>MyWebsite - Sign up</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Sansita" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Asul" rel="stylesheet">
 
         <link rel="stylesheet" href="css/general-style.css">
         <link rel="stylesheet" href="css/signup-style.css">
@@ -167,7 +169,7 @@ body {
 
             <div class="registrationform-wrapper">
                 <form name="registrationform" action="sendregistration.php" onsubmit="return validateRegistration();" method="POST">
-                    <span id="register-error"></span>
+                    <span id="register-error"><?php if($returnstate == $RETURNSTATE_REGISTRATION_ABORTED) print "The username you selected is already taken.";?></span>
                     <input class="registration-stretch-textfield" type="text" name="username" placeholder="Username">
                     <input class="registration-stretch-textfield" type="email" name="email" placeholder="E-Mail">
                     <input class="registration-stretch-textfield" type="password" name="pw1" placeholder="Password">
@@ -187,7 +189,7 @@ body {
                     <li><a href="terms.php">Terms of service</a></li>
                     <li><a href="privacy.php">Privacy note</a></li>
                     <li><a href="support.php">Support</a></li>
-                    <li><a href="info.php">Informations</a></li>
+                    <li><a href="info.php">Information</a></li>
                 </ul>
             </div>
         </div>

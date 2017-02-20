@@ -11,12 +11,13 @@
 	$forwardURL = "";
 	
 	function checkCredentials($username, $password) {
+		// TODO: Try to control the user login
 		return ($username == "bitchyprincefun") && ($password == "ParryHotter05Keuerfelch");
 	}
 
 	function unsuccessfullLogin() {
 		global $forwardURL;
-		$forwardURL = "index.php?loginaborted=1";
+		$forwardURL = "index.php?returnstate=1";
 	}
 	
 	function successfullLogin( $username ) {

@@ -86,9 +86,7 @@ function validateRegistration() {
         password_error_msg.valid = false;
     }
 
-    if(!password_error_msg.valid) {
-        document.getElementById("register-error").innerHTML = password_error_msg.errormsg;
-    }
+    document.getElementById("register-error").innerHTML = password_error_msg.errormsg;
 
     return password_error_msg.valid;
 }
